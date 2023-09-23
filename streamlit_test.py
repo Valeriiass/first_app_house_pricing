@@ -25,6 +25,6 @@ new_house = pd.DataFrame({
     'GarageCars':[GarageCars]
 })
 
-prediction = model.predict(new_house) # !!!!!!!!!!
+prediction = model.predict(new_house) 
 
 st.write("The price of the house is:", prediction)
