@@ -10,7 +10,7 @@ We have trained several models to predict the price of a house based on features
 
 
 import pickle
-model = pickle.load(open('Regression/pipe_knn.sav', 'rb'))
+model = pickle.load(open('trained_pipe_knn.sav', 'rb'))
 
 LotArea = st.number_input("Lot Area")
 TotalBsmtSF = st.number_input("Basement Square Feet")
