@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 28,
    "id": "1100af0e-0390-4773-8e9b-00e9fbca9e2d",
    "metadata": {},
    "outputs": [
@@ -17,6 +17,7 @@
    "source": [
     "# reading\n",
     "import pandas as pd\n",
+    "\n",
     "url = \"https://drive.google.com/file/d/1Uaa3K9Nh1LmKacFHnieBILj2LI6bjcfM/view?usp=share_link\"\n",
     "path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]\n",
     "housing = pd.read_csv(path)\n",
@@ -65,28 +66,120 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
-   "id": "80213f59-07f4-4e0f-9747-5407363000be",
+   "execution_count": 10,
+   "id": "30519833-440e-4445-a986-43043457a885",
+   "metadata": {
+    "collapsed": true,
+    "jupyter": {
+     "outputs_hidden": true
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Collecting pipreqs\n",
+      "  Downloading pipreqs-0.4.13-py2.py3-none-any.whl (33 kB)\n",
+      "Collecting yarg\n",
+      "  Downloading yarg-0.1.9-py2.py3-none-any.whl (19 kB)\n",
+      "Collecting docopt\n",
+      "  Downloading docopt-0.6.2.tar.gz (25 kB)\n",
+      "  Preparing metadata (setup.py) ... \u001b[?25ldone\n",
+      "\u001b[?25hRequirement already satisfied: requests in /Users/valeriiasatsiuk/anaconda3/lib/python3.10/site-packages (from yarg->pipreqs) (2.28.1)\n",
+      "Requirement already satisfied: certifi>=2017.4.17 in /Users/valeriiasatsiuk/anaconda3/lib/python3.10/site-packages (from requests->yarg->pipreqs) (2022.6.15)\n",
+      "Requirement already satisfied: charset-normalizer<3,>=2 in /Users/valeriiasatsiuk/anaconda3/lib/python3.10/site-packages (from requests->yarg->pipreqs) (2.0.4)\n",
+      "Requirement already satisfied: idna<4,>=2.5 in /Users/valeriiasatsiuk/anaconda3/lib/python3.10/site-packages (from requests->yarg->pipreqs) (3.4)\n",
+      "Requirement already satisfied: urllib3<1.27,>=1.21.1 in /Users/valeriiasatsiuk/anaconda3/lib/python3.10/site-packages (from requests->yarg->pipreqs) (1.26.14)\n",
+      "Building wheels for collected packages: docopt\n",
+      "  Building wheel for docopt (setup.py) ... \u001b[?25ldone\n",
+      "\u001b[?25h  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13705 sha256=e92ff5c0dbce205bf0ef10dabb650e64ce80a2d85e550ef0d0614be92711e183\n",
+      "  Stored in directory: /Users/valeriiasatsiuk/Library/Caches/pip/wheels/7c/d7/8d/2156234738063e3d4a39ba77dc677046100e62766b53807189\n",
+      "Successfully built docopt\n",
+      "Installing collected packages: docopt, yarg, pipreqs\n",
+      "Successfully installed docopt-0.6.2 pipreqs-0.4.13 yarg-0.1.9\n",
+      "Note: you may need to restart the kernel to use updated packages.\n"
+     ]
+    }
+   ],
+   "source": [
+    "pip install pipreqs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "ab3a4a42-b9d4-4cf4-a81a-d0b6bbc73c54",
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "#pipreqs Downloads/Regression/trained_pipe_knn.sav\n",
+    "#Downloads/Regression/trained_pipe_knn.sav"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "95f1fdfe-8934-4bc8-92aa-0bfd9800cc3e",
    "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'1.2.1'"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import sklearn\n",
+    "sklearn.__version__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "d2b9b932-c157-45d3-ae3d-bff5b4a64d60",
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "#pip install sklearn"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "80213f59-07f4-4e0f-9747-5407363000be",
+   "metadata": {
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "# store the trained pipeline\n",
     "import pickle\n",
     "pickle.dump(trained_pipe,\n",
-    "            open(file='pipe_knn.sav',\n",
+    "            open(file='NEW1_pipe_knn.sav',\n",
     "                 mode='wb'))"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": 36,
    "id": "532937bd-d3cf-4a1a-a3c6-b0ea36f9e5fa",
    "metadata": {},
    "outputs": [],
    "source": [
     "\n",
     "import pickle\n",
-    "model = pickle.load(open('pipe_knn.sav', 'rb'))\n",
+    "model = pickle.load(open('NEW1_pipe_knn.sav', 'rb'))\n",
     "\n",
     "import pandas as pd\n",
     "new_house = pd.DataFrame({\n",
@@ -103,22 +196,10 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 37,
    "id": "3ee144a9-f64a-4380-8116-8f1d4a02aaeb",
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "2023-09-23 16:31:41.299 \n",
-      "  \u001b[33m\u001b[1mWarning:\u001b[0m to view this Streamlit app on a browser, run it with the following\n",
-      "  command:\n",
-      "\n",
-      "    streamlit run /Users/valeriiasatsiuk/anaconda3/lib/python3.10/site-packages/ipykernel_launcher.py [ARGUMENTS]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "import streamlit as st\n",
     "\n",
@@ -132,7 +213,7 @@
     "\n",
     "\n",
     "import pickle\n",
-    "model = pickle.load(open('pipe_knn.sav', 'rb'))\n",
+    "model = pickle.load(open('NEW1_pipe_knn.sav', 'rb'))\n",
     "\n",
     "LotArea = st.number_input(\"Lot Area\")\n",
     "TotalBsmtSF = st.number_input(\"Basement Square Feet\")\n",
@@ -146,6 +227,8 @@
     "    'BedroomAbvGr':[BedroomAbvGr],\n",
     "    'GarageCars':[GarageCars]\n",
     "})\n",
+    "\n",
+    "prediction = model.predict(new_house)\n",
     "\n",
     "st.write(\"The price of the house is:\", prediction)"
    ]
