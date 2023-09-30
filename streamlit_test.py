@@ -8,6 +8,9 @@ We have trained several models to predict the price of a house based on features
 
 """)
 
+numpy==1.23.1
+pandas==1.4.3
+scikit-learn==0.24.2
 
 import pickle
 model = pickle.load(open('model.pkl', 'rb'))
